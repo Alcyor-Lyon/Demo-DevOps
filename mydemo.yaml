@@ -1,0 +1,82 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.21.1
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: html
+          mountPath: /usr/share/nginx/html
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 3
+      volumes:
+      - name: html
+        configMap:
+          name: nginx-html
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-html
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <title>Horloge</title>
+    </head>
+    <body>
+      <h1 id="clock">c'est l'heure ALCYOR</h1>
+    
+      <script>
+        function updateTime() {
+          var now = new Date();
+          var hours = now.getHours();
+          var minutes = now.getMinutes();
+          var seconds = now.getSeconds();
+    
+          var time =
+            (hours < 10 ? "0" + hours : hours) +
+            ":" +
+            (minutes < 10 ? "0" + minutes : minutes) +
+            ":" +
+            (seconds < 10 ? "0" + seconds : seconds);
+    
+          document.querySelector("#clock").innerHTML = time;
+        }
+    
+        setInterval(updateTime, 1000);
+      </script>
+    </body>
+    </html>
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app: nginx
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
+  type: NodePort
