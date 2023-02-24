@@ -11,3 +11,4 @@ helm repo update
 helm install kubeinvaders --set-string config.target_namespace="namespace1" -n kubeinvaders kubeinvaders/kubeinvaders --set service.type=NodePort --set ingress.enabled=false --set ingress.hostName=$URL --set deployment.image.tag=v1.9.6 --set route_host=$URL
 kubectl patch service kubeinvaders -n kubeinvaders --type='json' --patch='[{"op": "replace", "path": "/spec/ports/0/nodePort", "value":32100}]'
 
+while : ;  do k get pod -n namespace1 -o wide | grep -v Completed | egrep  "|nginx.*1/1     Running|kube.*1/1     Running"; sleep 2; clear; echo; k get node; echo ;done
