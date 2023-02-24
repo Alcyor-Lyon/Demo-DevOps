@@ -1,3 +1,7 @@
+# récupération des scripts
+git clone https://github.com/Alcyor-Lyon/Demo-DevOps.git
+cd Demo-DevOps
+
 kubectl create ns namespace1
 
 kubectl apply -f mydemo.yaml -n namespace1
