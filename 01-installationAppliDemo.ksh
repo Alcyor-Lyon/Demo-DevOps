@@ -15,6 +15,10 @@ URLINV=$(echo $URL| sed s/32111/32100/g)
 helm install kubeinvaders --set-string config.target_namespace="namespace1" -n kubeinvaders kubeinvaders/kubeinvaders --set service.type=NodePort --set ingress.enabled=false --set ingress.hostName=$URL --set deployment.image.tag=v1.9.6 --set route_host=$URLINV
 kubectl patch service kubeinvaders -n kubeinvaders --type='json' --patch='[{"op": "replace", "path": "/spec/ports/0/nodePort", "value":32100}]'
 
+kubectl -n namespace1 wait deploy --all --for condition=available
+kubectl -n kubeinvaders wait deploy --all --for condition=available
+
 echo
 echo "adresse applicative : https://$URL"
 echo "kubeInvaders : https://$URLINV"
+
