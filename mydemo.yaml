@@ -41,15 +41,15 @@ data:
     <html>
     <head>
         <title>Site de démonstration Alcyor</title>
-        <meta http-equiv="refresh" content="2">
+        <meta http-equiv="refresh" content="3">
     </head>
     <body>
         <h1>démonstration Alcyor dans l'air du temps</h1>
-        <img src="https://scontent-cdg2-1.xx.fbcdn.net/v/t1.18169-9/11899899_1187204854638612_3186127321407323695_n.png?_nc_cat=108&ccb=1-7&_nc_sid=cdbe9c&_nc_ohc=HkkdozzCJEkAX-4xUAe&_nc_ht=scontent-cdg2-1.xx&oh=00_AfAdP8v4ByJ1l9TYx_gyekk_SGQ3iCxck-sRng3nvXs1tg&oe=642054FE">
+        <img height="100" src="https://scontent-cdg2-1.xx.fbcdn.net/v/t1.18169-9/11899899_1187204854638612_3186127321407323695_n.png?_nc_cat=108&ccb=1-7&_nc_sid=cdbe9c&_nc_ohc=HkkdozzCJEkAX-4xUAe&_nc_ht=scontent-cdg2-1.xx&oh=00_AfAdP8v4ByJ1l9TYx_gyekk_SGQ3iCxck-sRng3nvXs1tg&oe=642054FE">
         <script>
             setTimeout(function() {
-                document.body.innerHTML += "<p>incident applicatif</p>";
-           }, 1000);
+                document.body.innerHTML += "<p>refresh automatique applicatif</p>";
+           }, 2000);
         </script>
     </body>
     </html>
@@ -63,6 +63,7 @@ spec:
     app: nginx
   ports:
   - name: http
+    nodePort: 32111
     port: 80
     targetPort: 80
   type: NodePort
