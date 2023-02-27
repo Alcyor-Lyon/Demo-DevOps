@@ -25,10 +25,30 @@ et quand le pod est en "1/1" l"applicatif est disponible via l'URL
 ```
 
 export URL=7bab38f1-beb3-4972-9f98-393faae4105a-10-244-27-30-32111.spch.r.killercoda.com 
-while : 
-do 
-  curl -w "--> %{time_starttransfer} seconds\n\n" --connect-timeout 3 https://$URL 2>/dev/null | grep -v title | egrep -i "alcyor|.*seconds" || echo "incident, appli inaccessible" 
-  sleep 1
-done
+while : ; do    curl --max-time 2 https://$URL 2>/dev/null | egrep -v "title|height" | egrep -i "alcyor" || echo "incident, appli inaccessible ou très lente" ;   sleep 1; done
 
 ```
+
+quand les constats de bon fonctionnement et de disponibilité sont faits, 
+nous pouvons mettre à jour le site pour corriger les accents, de mettre à jour le logo et de changer l'image souche
+
+```
+kubectl apply -f Demo-DevOps/mydemoupdated.yaml -n namespace1
+
+```
+
+l'idée étant de valider que la mise à jour je passe sans coupure de service alors qu'il n'y a qu'un seul conteneur 
+(mise à jour en rolling upgrade)
+
+nous pouvons alors aller sur l'URL kubeinvaders qui est
+``` 
+echo "https://$URL" | sed s/32111/32100/
+``` 
+
+et quand le jeu et les impacts sur l'applicatifs ont été expliqués
+
+```
+kubectl scale deployment -n namespace1 nginx-deployment --replicas=25
+```
+
+
