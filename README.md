@@ -27,7 +27,7 @@ et quand le pod est en "1/1" l"applicatif est disponible via l'URL
 export URL=7bab38f1-beb3-4972-9f98-393faae4105a-10-244-27-30-32111.spch.r.killercoda.com 
 while : 
 do 
-  curl --connect-timeout 3 https://$URL 2>/dev/null | grep -v title | grep -i ALCYOR  || echo "incident, appli inaccessible" 
+  curl -w "--> %{time_starttransfer} seconds\n\n" --connect-timeout 3 https://$URL 2>/dev/null | grep -v title | egrep -i "alcyor|.*seconds" || echo "incident, appli inaccessible" 
   sleep 1
 done
 
