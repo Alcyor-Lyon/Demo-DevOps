@@ -25,7 +25,7 @@ et quand le pod est en "1/1" l"applicatif est disponible via l'URL
 ```
 
 export URL=7bab38f1-beb3-4972-9f98-393faae4105a-10-244-27-30-32111.spch.r.killercoda.com 
-while : ; do    curl --max-time 2 https://$URL 2>/dev/null | egrep -v "title|height" | egrep -i "alcyor" || echo "incident, appli inaccessible ou très lente" ;   sleep 1; done
+while : ; do    curl --max-time 2 https://$URL 2>/dev/null | egrep -v "title|height" | sed s/\\\&eacute\\\;/e/ | egrep -i "alcyor" || echo "incident, appli inaccessible ou très lente" ;   sleep 1; done
 
 ```
 
@@ -33,7 +33,7 @@ quand les constats de bon fonctionnement et de disponibilité sont faits,
 nous pouvons mettre à jour le site pour corriger les accents, de mettre à jour le logo et de changer l'image souche
 
 ```
-kubectl apply -f Demo-DevOps/mydemoupdated.yaml -n namespace1
+Demo-DevOps/03-updateAppli.ksh
 
 ```
 
