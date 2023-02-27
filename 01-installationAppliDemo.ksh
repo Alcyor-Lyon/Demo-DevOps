@@ -2,7 +2,7 @@
 git clone https://github.com/Alcyor-Lyon/Demo-DevOps.git
 
 kubectl create ns namespace1
-kubectl apply -f Demo-DevOps/mydemo.yaml -n namespace1
+kubectl apply -f ~/Demo-DevOps/mydemo.yaml -n namespace1
 
 kubectl patch service nginx-service -n namespace1 --type='json' --patch='[{"op": "replace", "path": "/spec/ports/0/nodePort", "value":32111}]'
 
