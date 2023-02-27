@@ -15,7 +15,5 @@ helm install kubeinvaders --set-string config.target_namespace="namespace1" -n k
 kubectl patch service kubeinvaders -n kubeinvaders --type='json' --patch='[{"op": "replace", "path": "/spec/ports/0/nodePort", "value":32100}]'
 
 echo
-echo "adresse applicative : $URL"
-echo "kubeInvaders : $URLINV"
-
-
+echo "adresse applicative : https://$URL"
+echo "kubeInvaders : https://$URLINV"
