@@ -4,7 +4,7 @@ s'appuyant sur des playgrounds de KillerCoda
 
 - se connecter sur killercoda.com
 - cliquer sur "Playgrounds" puis "Kubernetes 1.xx" afin de lancer un environnement Kubernetes bac-à-sable
-<img src="images/killerKoda_playground.JPG" width="100">
+<img src="images/killerKoda_playground.JPG" width="300">
 
 - aller dans le menu à trois barres horizontales, tout en haut à droite, et selectionner "Traffic / Ports"
 ![menu ports](images/killerKoda_ports.JPG)
