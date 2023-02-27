@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-html
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Site de d&eacute;monstration</title>
+        <meta http-equiv="refresh" content="3">
+    </head>
+    <body>
+        <h1>d&eacute;monstration Alcyor plus actuelle</h1>
+        <img height="150" src="https://alcyor.fr/wp-content/uploads/2020/10/logo-aclyor-desk.svg">
+        <script>
+            setTimeout(function() {
+                document.body.innerHTML += "<p>refresh automatique applicatif</p>";
+           }, 2000);
+        </script>
+    </body>
+    </html>
