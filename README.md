@@ -19,5 +19,16 @@ curl https://raw.githubusercontent.com/Alcyor-Lyon/Demo-DevOps/main/01-installat
 la fin du shell précédent vous remonte un état des pods applicatifs rafraichit toutes les 2s
 et quand le pod est en "1/1" l"applicatif est disponible via l'URL
 
+- depuis une autre fenêtre, retourner sur killercoda.com
+- cliquer sur "Playgrounds" puis "Ubuntu" afin de lancer un environnement Linux bac-à-sable
 
+```
 
+export URL=7bab38f1-beb3-4972-9f98-393faae4105a-10-244-27-30-32111.spch.r.killercoda.com 
+while : 
+do 
+  curl --connect-timeout 3 https://$URL 2>/dev/null | grep -v title | grep -i ALCYOR  || echo "incident, appli inaccessible" 
+  sleep 1
+done
+
+```
