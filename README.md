@@ -4,9 +4,9 @@ s'appuyant sur des playgrounds de KillerCoda
 
 - se connecter sur killercoda.com
 - cliquer sur "Playgrounds" puis "Kubernetes 1.xx" afin de lancer un environnement Kubernetes bac-à-sable
-![playground](images/killerKoda_playground.jpg)
+![playground](images/killerKoda_playground.JPG)
 - aller dans le menu à trois barres horizontales, tout en haut à droite, et selectionner "Traffic / Ports"
-![menu ports](images/killerKoda_ports.jpg)
+![menu ports](images/killerKoda_ports.JPG)
 - dans la nouvelle fenêtre, sasir "32111" dans un des champs "Custom Ports" et cliquer sur le "Access" accolé
 - faire un "copier" de l'entrée DNS obtenue, sans la partie "https://"
 - coller le résultat dans la variable indiquée ci-dessous et appliquer la procédure
