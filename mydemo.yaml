@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: nginx-deployment
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: nginx
@@ -40,31 +40,17 @@ data:
     <!DOCTYPE html>
     <html>
     <head>
-      <meta charset="utf-8">
-      <title>Horloge</title>
+        <title>Site de démonstration Alcyor</title>
+        <meta http-equiv="refresh" content="2">
     </head>
     <body>
-      <h1 id="clock">c'est l'heure ALCYOR</h1>
-    
-      <script>
-        function updateTime() {
-          var now = new Date();
-          var hours = now.getHours();
-          var minutes = now.getMinutes();
-          var seconds = now.getSeconds();
-    
-          var time =
-            (hours < 10 ? "0" + hours : hours) +
-            ":" +
-            (minutes < 10 ? "0" + minutes : minutes) +
-            ":" +
-            (seconds < 10 ? "0" + seconds : seconds);
-    
-          document.querySelector("#clock").innerHTML = time;
-        }
-    
-        setInterval(updateTime, 1000);
-      </script>
+        <h1>démonstration Alcyor dans l'air du temps</h1>
+        <img src="https://scontent-cdg2-1.xx.fbcdn.net/v/t1.18169-9/11899899_1187204854638612_3186127321407323695_n.png?_nc_cat=108&ccb=1-7&_nc_sid=cdbe9c&_nc_ohc=HkkdozzCJEkAX-4xUAe&_nc_ht=scontent-cdg2-1.xx&oh=00_AfAdP8v4ByJ1l9TYx_gyekk_SGQ3iCxck-sRng3nvXs1tg&oe=642054FE">
+        <script>
+            setTimeout(function() {
+                document.body.innerHTML += "<p>incident applicatif</p>";
+           }, 1000);
+        </script>
     </body>
     </html>
 ---
