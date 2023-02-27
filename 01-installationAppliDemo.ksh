@@ -19,6 +19,12 @@ kubectl -n namespace1 wait deploy --all --for condition=available
 kubectl -n kubeinvaders wait deploy --all --for condition=available
 
 echo
+echo 'Nous vous invitons à lancer sur un serveur externe les commandes ci-dessous"
+echo 'while : ; do    curl --max-time 2 https://$URL 2>/dev/null | egrep -v "title|height" | sed s/\\\&eacute\\\;/e/ | egrep -i "alcyor" || echo "incident, appli inaccessible ou très lente" ;   sleep 1; done'
+
+echo
 echo "adresse applicative : https://$URL"
-echo "kubeInvaders : https://$URLINV"
+
+echo
+
 
